@@ -1,7 +1,6 @@
 package Chapter1ArraysAndStrings;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /* QUESTION 1.7
  * Write an algorithm such that if an element in an MxN matrix is 0, its entire row and
@@ -23,7 +22,14 @@ public class Question1_7 {
 			System.out.println();
 		}
 	}
-
+	
+	
+	/* Description : if an element in an MxN matrix is 0, its entire row and column is set to 0.
+	 * @param corRow 矩阵里为0点的x坐标
+	 * @param corCol 矩阵里为0点的y坐标
+	 * @param zeromatrix 将为0的点所在的行列都变成0的新矩阵
+	 * @return int[][]
+	 */
 	public static int[][] setozero(int[][] matrix){
 		// check all integer in matrix and store the coordinate 
 		ArrayList<Integer> corRow = new ArrayList<Integer>();
