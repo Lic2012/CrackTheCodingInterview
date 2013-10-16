@@ -15,18 +15,19 @@ public class Question2_1 {
 		linkedlist.appendToTail(" ");
 		linkedlist.appendToTail("U");
 		linkedlist.appendToTail("P");
-		display(linkedlist);
-		removeDuplicates(linkedlist);
-		display(linkedlist);
+		Node.display(linkedlist);
+		//removeDuplicates(linkedlist);
+		removeDuplicatesNoBuffer(linkedlist);
+		Node.display(linkedlist);
 	}
 	
 	/*
 	 * Description: Remove duplicates from an unsorted linked list, use extra buffer -- a hashtable 
 	 * to remove any duplicates
-	 * @param 
-	 * @param
-	 * @param
-	 * @return 
+	 * @arg Hashtable table:the key is node's data , value is true or false indicates occour or not   
+	 * @arg Node previous: the previous node pointer
+	 * @param Node l: head not of linkedlist
+	 * @return void
 	 */
 	public static void removeDuplicates(Node l){
 		Hashtable<String, Boolean> table = new Hashtable<String, Boolean>(); 
@@ -41,18 +42,35 @@ public class Question2_1 {
 			l = l.next; /*l foward*/
 		}
 	}
-	static void display(Node head){
-		Node n = head;
-		System.out.println("Linked List displaying:");
-		if (n.next == null){
-			System.out.print("Empty Linked List!");
+	/*
+	 * Description: Not us extra buffer, Remove duplicates from an unsorted linked list
+	 * 
+	 */
+	public static void removeDuplicatesNoBuffer(Node head){
+		if (head == null) return;
+		Node previous = head;
+		Node current = head;
+		while(current != null){
+			Node runner= head;
+			while(runner != current){
+				if (runner.data.equals(current.data)){
+					Node tmp = current.next;
+					previous.next = tmp;
+					current = tmp;
+					break;
+				}
+				runner = runner.next;
+			}
+			if( runner == current ){
+				previous = current;
+				current = current.next;
+			}
 		}
-		while( n.next != null){
-			System.out.print(n.data + "->");
-			n = n.next;
-		}
-		System.out.println(n.data);
 	}
+	
+	/*
+	 * Description: display the linked list like the following format: "F->O->L->L->O->W-> ->U->P"
+	 */
 }
 
 class Node{
@@ -80,6 +98,18 @@ class Node{
 			n = n.next;
 		}
 		return head;
+	}
+	static void display(Node head){
+		Node n = head;
+		System.out.println("Linked List displaying:");
+		if (n.next == null){
+			System.out.print("Empty Linked List!");
+		}
+		while( n.next != null){
+			System.out.print(n.data + "->");
+			n = n.next;
+		}
+		System.out.println(n.data);
 	}
 
 }
