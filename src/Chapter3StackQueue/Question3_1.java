@@ -21,6 +21,10 @@ public class Question3_1 {
 
 }
 class StackwithMin extends Stack<Integer>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Stack<Integer> s2;
 	public StackwithMin(){
 		s2 = new Stack<Integer>();
