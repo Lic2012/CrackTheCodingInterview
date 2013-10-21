@@ -1,6 +1,5 @@
 package Chapter3StackQueue;
 
-import java.lang.reflect.Array;
 import java.util.Stack;
 
 public class Question3_5 {
@@ -26,8 +25,8 @@ public class Question3_5 {
  * this class is far from perfect! cuz USE MyQueue(T) to identify the type of Stack elements!
  */
 class MyQueue{
-	private Stack stack1 = new Stack(); // use private decoration The external class cannot access！
-	private Stack stack2 = new Stack(); // error:  havn't been instanced
+	private Stack<Object> stack1 = new Stack<Object>(); // use private decoration The external class cannot access！
+	private Stack<Object> stack2 = new Stack<Object>(); // error:  havn't been instanced
 
 	public void inQueue(Object item){
 		stack1.push(item);
@@ -41,10 +40,10 @@ class MyQueue{
 			return peek;
 		}
 	}
-	public Stack getStack1(){ // 
+	public Stack<Object> getStack1(){ // 
 		return this.stack1;
 	}
-	public Stack getStack2(){
+	public Stack<Object> getStack2(){
 		return this.stack2;
 	}
 	public void display(){
