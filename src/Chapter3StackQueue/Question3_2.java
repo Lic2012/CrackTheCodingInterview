@@ -3,7 +3,8 @@ package Chapter3StackQueue;
 import java.util.*;
 /*
  * @description: design a stack
- * @function: Min which returns the minimum element. Push, pop and Min should all operate in O(1) time  
+ * @function: Min which returns the minimum element. Push, pop and Min should all operate in O(1) time 
+ * @improve: if the condition is 1,1,1.... the storage is a waste. try to improve ! try to set count on stack_min
  */
 public class Question3_2 {
 	public static void main(String[] args){
@@ -38,8 +39,9 @@ public class Question3_2 {
 }
 
 /*
- *@Description: design a stack can push pop and return min value. 
+ *@Description: design a stack can push pop and return Min value. 
  */
+
 class stack3_2 {
 	private Stack<Integer> stack_min = new Stack<Integer>(); //minimum values 
 	private Stack<Integer> stack_body = new Stack<Integer>(); //body stack
@@ -83,6 +85,31 @@ class stack3_2 {
 		}
 		return null;
 	}
+}
+/*
+ * stack_min node
+ * when push:
+ * if stack_min = null  then set n to minNode.value  and push minNode to stack_min; push n to stack_body
+ * else{
+ *   if n<stack_min.peek.value then set n to minNode.value  and push minNode to stack_min
+ *   else stack_min.peek.cnt++ 
+ *   stack_body.push(n)
+ * when pop:
+ * if stack_body == null return null;
+ * else
+ * 	if stack_min.peek.cnt > 1
+ * 		stack_min.peek.cnt--
+
+ * 	else stack_min.pop();
+ *  return stack_body.pop();
+ * when peek:
+ * similar as origin
+ * when getMin:
+ * return stack_min.peek.value
+ */
+class minNode{
+	int value;
+	int cnt = 1;
 }
 
 //	public static void main(String[] args) {
